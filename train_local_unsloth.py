@@ -1,5 +1,6 @@
 import os
 import json
+import torch 
 from datasets import Dataset
 from trl import SFTTrainer
 from transformers import TrainingArguments, DataCollatorForSeq2Seq
@@ -111,7 +112,6 @@ trainer = SFTTrainer(
     ),
 )
 
-import torch
 print("Starting training...")
 trainer_stats = trainer.train()
 
