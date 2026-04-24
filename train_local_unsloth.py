@@ -87,7 +87,7 @@ dataset = hf_dataset.map(formatting_prompts_func, batched=True)
 # ==========================================
 trainer = SFTTrainer(
     model = model,
-    tokenizer = tokenizer,
+    processing_class = tokenizer,
     train_dataset = dataset,
     dataset_text_field = "text",
     max_seq_length = max_seq_length,
