@@ -1,0 +1,16 @@
+# Core Machine Learning Libraries
+torch>=2.1.0
+
+# Unsloth for fast, 4-bit quantized training (must be installed from GitHub for latest features)
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+
+# HuggingFace Ecosystem
+transformers
+datasets
+trl
+peft
+accelerate
+bitsandbytes
+
+# Additional Utilities
+xformers
