@@ -20,7 +20,7 @@ def main() -> None:
     parser.add_argument("--repo-id", required=True, help="Hugging Face repo id, e.g. user/my-lora-adapter")
     parser.add_argument(
         "--local-path",
-        default="mistral-small-24b-ifc-pma",
+        default="devstral-24b-ifc-pma",
         help="Local adapter directory created by training",
     )
     parser.add_argument("--private", action="store_true", help="Create repo as private")

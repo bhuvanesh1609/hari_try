@@ -12,10 +12,10 @@ from transformers import TrainingArguments, DataCollatorForSeq2Seq
 # ==========================================
 # 1. Configuration
 # ==========================================
-# Mistral Small 3 is 24B parameters. Unsloth has pre-quantized 4-bit versions.
-MODEL_NAME = "unsloth/mistral-small-24b-instruct-2501-bnb-4bit" 
+# Default to Devstral 24B-style 4-bit checkpoint; override with MODEL_NAME env var.
+MODEL_NAME = os.getenv("MODEL_NAME", "unsloth/devstral-small-2505-bnb-4bit")
 DATASET_PATH = "raw_training_data.json"
-OUTPUT_DIR = "mistral-small-24b-ifc-pma"
+OUTPUT_DIR = "devstral-24b-ifc-pma"
 
 max_seq_length = 2048 # Adjust if you need longer context
 dtype = None          # Auto-detection
@@ -114,12 +114,12 @@ def main():
         max_seq_length = max_seq_length,
         data_collator = DataCollatorForSeq2Seq(tokenizer = tokenizer),
         dataset_num_proc = 2,
-        packing = False, # Can make training 5x faster for short sequences.
+        packing = False, 
         args = TrainingArguments(
             per_device_train_batch_size = 2,
             gradient_accumulation_steps = 4,
             warmup_steps = 5,
-            num_train_epochs = 1, # Increase this to 3 or 4 for better results
+            num_train_epochs = 3, 
             learning_rate = 2e-4,
             fp16 = not torch.cuda.is_bf16_supported(),
             bf16 = torch.cuda.is_bf16_supported(),

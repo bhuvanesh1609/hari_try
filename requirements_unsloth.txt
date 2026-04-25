@@ -11,6 +11,7 @@ trl
 peft
 accelerate
 bitsandbytes
+huggingface_hub
 
 # Additional Utilities
 xformers

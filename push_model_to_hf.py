@@ -18,7 +18,11 @@ def resolve_token(token_env: str) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Push a local model folder to Hugging Face Hub")
     parser.add_argument("--repo-id", required=True, help="Hugging Face repo id, e.g. user/my-model")
-    parser.add_argument("--local-path", required=True, help="Local model directory to upload")
+    parser.add_argument(
+        "--local-path",
+        default="devstral-24b-ifc-pma",
+        help="Local model directory to upload",
+    )
     parser.add_argument("--private", action="store_true", help="Create repo as private")
     parser.add_argument("--token-env", default="HF_TOKEN", help="Environment variable that contains HF token")
     parser.add_argument(
